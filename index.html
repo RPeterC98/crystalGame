@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
+    <script src="https://code.jquery.com/jquery.js"></script>
+</head>
+
+<body>
+    <h1>Get t' Guessin'</h1>
+    <img class="crystal" id="c1" src="assets/images/crystal2.jpg">
+    <img class="crystal" id="c2" src="assets/images/crystal.jpg">
+    <img class="crystal" id="c3" src="assets/images/crystal3.jpg">
+    <img class="crystal" id="c4" src="assets/images/crystal4.jpg">
+</body>
+<script>
+    var score = 0;
+    var wins = 0;
+    var losses = 0;
+    var myScore = 0;
+    var scoreArray = [];
+
+    function initialize() {
+        score = 0;
+        myScore = 0;
+        scoreArray = [];
+        
+        score = Math.floor((Math.random() * 120) + 19);
+
+        alert("Your Number: " + score);
+
+        for (var i = 0; i < 4; i++) {
+            var random = Math.floor((Math.random() * 12) + 1);
+            scoreArray.push(random);
+        }
+
+        console.log(scoreArray);
+    }
+
+    function checkWin() {
+        if (myScore == score) {
+            wins++;
+            alert("You Won! \n Wins: " + wins + " \n Losses: " + losses);
+            initialize();
+        }
+        else if (myScore > score) {
+            losses++;
+            alert("You Lost! \n Wins: " + wins + " \n Losses: " + losses);
+            initialize();
+        }
+    }
+
+    initialize();
+
+    $("#c1").on("click", function () {
+        alert("You Picked: " + scoreArray[0]);
+        myScore += scoreArray[0];
+        alert("Current Score: " + myScore);
+        checkWin();
+    })
+
+    $("#c2").on("click", function () {
+        alert("You Picked: " + scoreArray[1]);
+        myScore += scoreArray[1];
+        alert("Current Score: " + myScore);
+        checkWin();
+    })
+
+    $("#c3").on("click", function () {
+        alert("You Picked: " + scoreArray[2]);
+        myScore += scoreArray[2];
+        alert("Current Score: " + myScore);
+        checkWin();
+    })
+
+    $("#c4").on("click", function () {
+        alert("You Picked: " + scoreArray[3]);
+        myScore += scoreArray[3];
+        alert("Current Score: " + myScore);
+        checkWin();
+    })
+</script>
+
+</html>
